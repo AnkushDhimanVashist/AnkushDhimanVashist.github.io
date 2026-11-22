@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ankush — React Native Developer</title>
-<meta name="description" content="Ankush Dhiman Vashisth — React Native developer with 4.5+ years shipping Android and iOS apps.">
-<meta property="og:title" content="Ankush — React Native Developer">
+<title>Ankush — Senior React Native Developer</title>
+<meta name="description" content="Ankush Dhiman Vashisth — Senior React Native Developer and Team Lead with 4.5+ years shipping Android and iOS apps.">
+<meta property="og:title" content="Ankush — Senior React Native Developer">
 <meta property="og:description" content="React Native apps and Node.js developer tools.">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/76862257?v=4">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b0d10'/><text x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%23c6f24e'>A_</text></svg>">
@@ -99,11 +99,16 @@ h2{font-size:clamp(34px,4.5vw,52px);letter-spacing:-.03em;line-height:1.05;margi
 .about-grid p strong{color:var(--ink);font-weight:600}
 .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .3s,transform .3s}
-.stat:hover{border-color:var(--line2);transform:translateY(-3px)}
-.stat b{display:block;font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1}
-.stat b em{font-style:normal;color:var(--acc)}
-.stat span{font-size:14px;color:var(--ink3);margin-top:8px;display:block}
+.stat{position:relative;overflow:hidden;background:linear-gradient(160deg,#171c23,var(--card) 60%);border:1px solid var(--line);border-radius:20px;padding:24px 24px 22px;transition:border-color .3s,transform .3s,box-shadow .3s;isolation:isolate}
+.stat::before{content:"";position:absolute;z-index:-1;width:160px;height:160px;right:-60px;top:-70px;border-radius:50%;background:radial-gradient(circle,rgba(198,242,78,.16),transparent 70%);transition:transform .5s}
+.stat::after{content:"";position:absolute;left:24px;right:24px;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--acc),var(--acc2));transform:scaleX(.18);transform-origin:left;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.stat:hover{border-color:var(--line2);transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(0,0,0,.9)}
+.stat:hover::before{transform:scale(1.35)}
+.stat:hover::after{transform:scaleX(1)}
+.stat-ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px;background:rgba(255,255,255,.04);border:1px solid var(--line2);margin-bottom:22px}
+.stat b{display:flex;align-items:baseline;font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.stat b em{font-style:normal;color:var(--acc);font-size:.7em;margin-left:2px}
+.stat .lbl{display:block;font-size:15px;color:var(--ink2);margin-top:10px;line-height:1.35}
 
 /* skills */
 .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -190,7 +195,7 @@ h2{font-size:clamp(34px,4.5vw,52px);letter-spacing:-.03em;line-height:1.05;margi
 .edu .sc{font:600 12px var(--mono);color:var(--acc-ink);background:var(--acc);padding:2px 9px;border-radius:999px}
 /* github */
 .gh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.gh-grid .stat b{font-size:36px}
+.gh-grid .stat b{font-size:40px}
 .gh-cal{margin-top:20px;padding:24px;overflow-x:auto}
 .gh-cal img{min-width:640px;width:100%;filter:saturate(1.1)}
 
@@ -238,7 +243,7 @@ footer a:hover{color:var(--acc)}
   .wrap{padding:0 16px}
   .gh-grid{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
-  .stat{padding:18px}.stat b{font-size:34px}
+  .stat{padding:18px 18px 16px}.stat b{font-size:40px}.stat-ico{margin-bottom:16px}.stat .lbl{font-size:14px}
   .avatar{width:72px;height:72px;right:-4px;top:-26px}
   .term pre{font-size:12px;padding:14px;min-height:260px}
   .timeline{padding-left:26px}.job::before{left:-26px}.timeline::before{left:5px}
@@ -396,20 +401,20 @@ const PROFILE = {
   github: "AnkushDhimanVashist",
   avatar: "https://avatars.githubusercontent.com/u/76862257?v=4",
   status: "Open to opportunities",
-  roles: ["React Native Developer", "Android & iOS app builder", "Node.js API builder", "Open-source tinkerer"],
-  lead: "React Native developer with 4.5+ years shipping Android and iOS apps — real-time chat, payments, subscriptions and location features — plus the Node.js tools and APIs behind them.",
+  roles: ["Senior React Native Developer", "Team Lead", "Android & iOS app builder", "Node.js API builder", "Open-source tinkerer"],
+  lead: "Senior React Native Developer and Team Lead with 4.5+ years shipping Android and iOS apps — real-time chat, payments, subscriptions and location features — leading a team of 5 developers.",
   about: [
-    "I'm a <strong>React Native developer</strong> with <strong>4.5+ years</strong> of experience across three companies, building apps that are live on the <strong>App Store</strong> and <strong>Google Play</strong>: dating, social music streaming, influencer platforms, e-commerce and ride booking.",
+    "I'm a <strong>Senior React Native Developer</strong> and <strong>Team Lead</strong>, mentoring a team of <strong>5 junior developers</strong>, with <strong>4.5+ years</strong> of experience across three companies, building apps that are live on the <strong>App Store</strong> and <strong>Google Play</strong>: dating, social music streaming, influencer platforms, e-commerce and ride booking.",
     "My day-to-day is real-time features with <strong>Socket.io</strong> and Firestore, payments with <strong>Stripe, Razorpay and RevenueCat</strong>, background location, deep links and native modules. On the side I build developer tools like <strong>create-node-api-kit</strong> and AI apps like <strong>Vinod Vocab Vault</strong>.",
     "I hold an <strong>MCA from RIT Roorkee</strong> and was recognised in Ebizon Digital's quarterly R&amp;R awards."
   ],
   location: "India",
-  meta: ["💼 React Native Developer @ iTechnolabs", "🎓 MCA, RIT Roorkee", "🚀 Shipping since 2022"],
+  meta: ["💼 Senior RN Developer & Team Lead @ iTechnolabs", "👥 Leading 5 developers", "🎓 MCA, RIT Roorkee", "🚀 Shipping since 2022"],
   stats: [                                // [number, suffix, label]
-    [4.5, "+", "Years of experience"],
-    [17, "+", "Apps built"],
-    [3, "", "Companies"],
-    [1, "", "npm package published"]
+    [4.5, "+", "Years building mobile apps", "⏱️"],
+    [17, "+", "Apps built & shipped", "📱"],
+    [5, "", "Junior developers led", "👥"],
+    [3, "", "Companies worked with", "🏢"]
   ],
   email: "akvashist98@gmail.com",
   phone: "+91 9464580227",
@@ -422,8 +427,8 @@ const PROFILE = {
   tools: ["React Native", "React", "Expo", "Redux Toolkit", "Zustand", "React Navigation", "Socket.io", "REST APIs", "Firebase", "Stripe", "Razorpay", "RevenueCat", "In-App Purchase", "Push Notifications", "Deep Links", "Native Modules", "Node.js", "Express", "Git", "Xcode", "Jira"],
   proficiency: [["React Native (Android & iOS)", 92], ["JavaScript / TypeScript", 90], ["Redux Toolkit / Zustand", 88], ["Payments & subscriptions", 85], ["Real-time (Socket.io, Firestore)", 85], ["Node.js & Express", 75]],
   experience: [
-    { title:"React Native Developer", company:"iTechnolabs Inc", dates:"Nov 2024 – Present", place:"Mohali",
-      points:["Building and shipping cross-platform client apps for Android and iOS"] },
+    { title:"Senior React Native Developer & Team Lead", company:"iTechnolabs Inc", dates:"Nov 2024 – Present", place:"Mohali",
+      points:["Leading a team of 5 junior React Native developers: task planning, code reviews and mentoring","Building and shipping cross-platform client apps for Android and iOS"] },
     { title:"React Native Developer", company:"MinterMinds", dates:"Apr 2024 – Nov 2024", place:"Chandigarh",
       points:["Built cross-platform mobile apps with React Native"] },
     { title:"React Native Developer", company:"Ebizon Digital", dates:"Feb 2022 – Apr 2024", place:"Dehradun",
@@ -566,7 +571,7 @@ const socialHTML = socials.map(([k, u, l]) => `<a href="${esc(u)}" target="_blan
 $("#heroSocials").innerHTML = socialHTML; $("#footSocials").innerHTML = socialHTML;
 
 // stats
-$("#stats").innerHTML = P.stats.map(([n, suf, l]) => `<div class="stat"><b><span data-count="${n}">0</span><em>${suf}</em></b><span>${esc(l)}</span></div>`).join("");
+$("#stats").innerHTML = P.stats.map(([n, suf, l, ic]) => `<div class="stat">${ic ? `<div class="stat-ico">${ic}</div>` : ""}<b><span class="num" data-count="${n}">0</span>${suf ? `<em>${suf}</em>` : ""}</b><span class="lbl">${esc(l)}</span></div>`).join("");
 
 // bars
 $("#bars").innerHTML = P.proficiency.map(([n, v]) => `<div><div class="bar-top"><span>${esc(n)}</span><span>${v}%</span></div><div class="bar"><i data-w="${v}"></i></div></div>`).join("");
@@ -650,9 +655,9 @@ if ((P.otherProjects || []).length) $("#otherProj .chips").innerHTML = P.otherPr
 $("#ghCal").src = `https://ghchart.rshah.org/c6f24e/${P.github}`;
 const ghCards = (repos, followers, stars, since) => {
   $("#ghStats").innerHTML = [[repos, "Public repos"], [stars, "Stars earned"], [since, "Member since"]]
-    .map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+    .map(([n, l]) => `<div class="stat"><b>${n}</b><span class="lbl">${l}</span></div>`).join("");
 };
-ghCards(P.stats[1][0], 0, "—", 2021);
+ghCards("—", 0, "—", 2021);
 fetch(`https://api.github.com/users/${P.github}`).then(r => r.ok ? r.json() : null).then(u => {
   if (!u) return;
   fetch(`https://api.github.com/users/${P.github}/repos?per_page=100`).then(r => r.ok ? r.json() : []).then(rs => {

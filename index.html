@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ankush — Software Engineer</title>
+<meta name="description" content="Ankush — Software Engineer building React Native apps and Node.js developer tools.">
+<meta property="og:title" content="Ankush — Software Engineer">
+<meta property="og:description" content="React Native apps and Node.js developer tools.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/76862257?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b0d10'/><text x='32' y='43' font-family='monospace' font-size='30' font-weight='700' text-anchor='middle' fill='%23c6f24e'>A_</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d10; --bg2:#111419; --card:#14181e; --line:#232934; --line2:#2e3643;
+  --ink:#eef1f5; --ink2:#a9b2bf; --ink3:#6c7684;
+  --acc:#c6f24e; --acc-ink:#0b0d10; --acc2:#5ad1ff;
+  --r:16px; --max:1120px;
+  --sans:"Bricolage Grotesque",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+   radial-gradient(600px 400px at 85% -5%, rgba(198,242,78,.10), transparent 70%),
+   radial-gradient(500px 400px at -10% 30%, rgba(90,209,255,.07), transparent 70%);
+}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.35;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 0%,#000 10%,transparent 65%)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono)}
+::selection{background:var(--acc);color:var(--acc-ink)}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(11,13,16,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--mono);font-weight:600;font-size:18px}
+.logo span{color:var(--acc);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.links{display:flex;gap:28px;font-size:15px;color:var(--ink2)}
+.links a{position:relative;transition:color .2s}
+.links a:hover,.links a.on{color:var(--ink)}
+.links a.on::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--acc);border-radius:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--line2);transition:transform .2s,background .2s,border-color .2s,color .2s;cursor:pointer;background:transparent;color:var(--ink);font-family:inherit}
+.btn:hover{transform:translateY(-2px);border-color:var(--ink3)}
+.btn.pri{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.btn.pri:hover{background:#d6ff66}
+.btn.sm{padding:8px 16px;font-size:14px}
+.menu{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:6px}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 60px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 10px;border:1px solid var(--line2);border-radius:999px;font-size:14px;color:var(--ink2);background:rgba(20,24,30,.6)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(198,242,78,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(198,242,78,0)}100%{box-shadow:0 0 0 0 rgba(198,242,78,0)}}
+h1{font-size:clamp(44px,7vw,84px);line-height:1;letter-spacing:-.035em;font-weight:800;margin:22px 0 18px}
+h1 .hl{color:var(--acc)}
+.role{font-family:var(--mono);font-size:clamp(15px,1.6vw,18px);color:var(--acc2);margin-bottom:18px;min-height:1.6em}
+.role .cur{display:inline-block;width:9px;height:1.1em;background:var(--acc2);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+.lead{color:var(--ink2);font-size:19px;max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 28px}
+.socials{display:flex;gap:10px}
+.socials a{width:42px;height:42px;border-radius:12px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--ink2);transition:all .2s}
+.socials a:hover{color:var(--acc-ink);background:var(--acc);border-color:var(--acc);transform:translateY(-3px)}
+.socials svg{width:19px;height:19px}
+
+/* terminal card */
+.term-wrap{position:relative}
+.avatar{position:absolute;top:-34px;right:-14px;width:96px;height:96px;border-radius:24px;border:3px solid var(--bg);outline:1px solid var(--line2);z-index:2;transform:rotate(6deg);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.term{background:#0e1116;border:1px solid var(--line2);border-radius:var(--r);overflow:hidden;box-shadow:0 30px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(198,242,78,.04)}
+.term-bar{display:flex;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:center}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#3a414d}
+.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar b{margin-left:auto;font:400 12px var(--mono);color:var(--ink3)}
+.term pre{font:13.5px/1.75 var(--mono);padding:18px 20px 22px;color:var(--ink2);min-height:300px;white-space:pre-wrap}
+.t-p{color:var(--acc)}.t-c{color:var(--ink)}.t-d{color:var(--ink3)}.t-v{color:var(--acc2)}.t-ok{color:#28c840}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font:500 13px var(--mono);padding:6px 12px;border-radius:8px;background:var(--card);border:1px solid var(--line);color:var(--ink2)}
+
+/* sections */
+section{padding:110px 0}
+.eyebrow{font:600 13px var(--mono);color:var(--acc);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"//";color:var(--ink3)}
+h2{font-size:clamp(34px,4.5vw,52px);letter-spacing:-.03em;line-height:1.05;margin:12px 0 48px;font-weight:800}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.about-grid p{color:var(--ink2);font-size:18px;margin-bottom:16px}
+.about-grid p strong{color:var(--ink);font-weight:600}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .3s,transform .3s}
+.stat:hover{border-color:var(--line2);transform:translateY(-3px)}
+.stat b{display:block;font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat b em{font-style:normal;color:var(--acc)}
+.stat span{font-size:14px;color:var(--ink3);margin-top:8px;display:block}
+
+/* skills */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.panel h3{font-size:15px;font-family:var(--mono);color:var(--ink3);font-weight:600;margin-bottom:18px;text-transform:uppercase;letter-spacing:.06em}
+.panel .chips{margin-top:0}
+.panel .chips .chip{background:var(--bg2)}
+.bars{display:grid;gap:20px}
+.bar-top{display:flex;justify-content:space-between;font-size:15px;margin-bottom:8px}
+.bar-top span:last-child{font-family:var(--mono);color:var(--ink3)}
+.bar{height:6px;background:var(--bg2);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:6px;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+
+/* timeline */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--acc),var(--line) 60%)}
+.job{position:relative;margin-bottom:28px}
+.job::before{content:"";position:absolute;left:-34px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--acc)}
+.job .panel{padding:26px 28px}
+.job-h{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 20px;margin-bottom:4px}
+.job-h h4{font-size:21px;letter-spacing:-.01em}
+.job-h span{font:13px var(--mono);color:var(--ink3);padding-top:6px}
+.job .co{color:var(--acc2);font-weight:600;margin-bottom:12px}
+.job ul{list-style:none;color:var(--ink2);display:grid;gap:6px}
+.job li{padding-left:20px;position:relative}
+.job li::before{content:"▹";position:absolute;left:0;color:var(--acc)}
+
+/* projects */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:-24px 0 32px}
+.filters button{font:500 14px var(--mono);padding:8px 16px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--ink2);cursor:pointer;transition:all .2s}
+.filters button.on,.filters button:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .35s,border-color .35s}
+.proj::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(198,242,78,.08),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.proj:hover{transform:translateY(-5px);border-color:var(--line2)}
+.proj:hover::after{opacity:1}
+.proj.hide{display:none}
+.proj.feat{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.proj-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.proj-ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--bg2);border:1px solid var(--line)}
+.proj-links{display:flex;gap:6px}
+.proj-links a{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;color:var(--ink3);transition:all .2s}
+.proj-links a:hover{color:var(--acc);background:var(--bg2)}
+.proj-links svg{width:18px;height:18px}
+.cat{font:600 12px var(--mono);color:var(--acc);text-transform:uppercase;letter-spacing:.08em}
+.proj h3{font-size:24px;letter-spacing:-.02em;margin:4px 0 10px}
+.proj p{color:var(--ink2);font-size:16px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.tags span{font:12px var(--mono);color:var(--ink3);padding:4px 10px;border-radius:6px;border:1px solid var(--line)}
+.cmd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;background:#0e1116;border:1px solid var(--line2);border-radius:10px;padding:12px 14px;font:14px var(--mono);color:var(--ink)}
+.cmd span::before{content:"$ ";color:var(--acc)}
+.cmd button{background:none;border:1px solid var(--line2);color:var(--ink2);border-radius:6px;font:12px var(--mono);padding:4px 10px;cursor:pointer}
+.cmd button:hover{color:var(--ink);border-color:var(--ink3)}
+
+/* github */
+.gh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gh-grid .stat b{font-size:36px}
+.gh-cal{margin-top:20px;padding:24px;overflow-x:auto}
+.gh-cal img{min-width:640px;width:100%;filter:saturate(1.1)}
+
+/* contact */
+.contact{text-align:center;padding:130px 0}
+.contact h2{font-size:clamp(40px,7vw,88px);margin:16px auto 22px;max-width:900px}
+.contact h2 span{color:var(--acc)}
+.contact p{color:var(--ink2);max-width:520px;margin:0 auto 34px;font-size:19px}
+.contact .eyebrow{justify-content:center}
+.contact .socials{justify-content:center;margin-top:30px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink3);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a:hover{color:var(--acc)}
+
+/* responsive */
+@media (max-width:900px){
+  .links,.nav-cta{display:none}
+  .menu{display:block}
+  nav.open .links{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:rgba(11,13,16,.97);border-bottom:1px solid var(--line);padding:8px 24px 16px}
+  nav.open .links a{padding:12px 0;border-bottom:1px solid var(--line)}
+  nav.open .links a.on::after{display:none}
+  .hero .wrap,.about-grid,.skills-grid,.proj.feat{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .hero{padding-top:110px}
+  .term-wrap{margin-top:20px}
+  section{padding:80px 0}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .gh-grid{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:18px}.stat b{font-size:34px}
+  .avatar{width:72px;height:72px;right:-4px;top:-26px}
+  .term pre{font-size:12px;padding:14px;min-height:260px}
+  .timeline{padding-left:26px}.job::before{left:-26px}.timeline::before{left:5px}
+  .cmd{font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body id="top">
+
+<!--
+  ============================================================
+  EDIT YOUR DETAILS IN THE `PROFILE` OBJECT IN THE <script> BELOW.
+  Empty values are hidden automatically (e.g. no LinkedIn → no icon,
+  no experience entries → no Experience section).
+  ============================================================
+-->
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">ankush<span>_</span></a>
+    <div class="links" id="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience" data-sec="experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#github">GitHub</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn sm nav-cta" id="navResume" href="#contact">Let's talk →</a>
+    <button class="menu" id="menu" aria-label="Open menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="status reveal"><span class="dot"></span><span id="statusText"></span></div>
+      <h1 class="reveal">Hi, I'm <span class="hl" id="firstName"></span>.<br>I build things<br>that ship.</h1>
+      <div class="role reveal"><span id="typed"></span><span class="cur"></span></div>
+      <p class="lead reveal" id="lead"></p>
+      <div class="cta reveal">
+        <a class="btn pri" href="#projects">View my work ↓</a>
+        <a class="btn" id="resumeBtn" target="_blank" rel="noopener">Resume ↗</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <div class="socials reveal" id="heroSocials"></div>
+    </div>
+    <div class="term-wrap reveal">
+      <img class="avatar" id="avatar" alt="Profile photo">
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><b>~/projects — zsh</b></div>
+        <pre id="term"></pre>
+      </div>
+      <div class="chips" id="heroChips"></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">About</div>
+    <h2 class="reveal">The person behind the code</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <div id="aboutText"></div>
+        <div class="meta" id="meta"></div>
+      </div>
+      <div class="stats reveal" id="stats"></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow reveal">Skills</div>
+    <h2 class="reveal">What I work with</h2>
+    <div class="skills-grid">
+      <div style="display:grid;gap:20px">
+        <div class="panel reveal"><h3>Languages</h3><div class="chips" id="langs"></div></div>
+        <div class="panel reveal"><h3>Frameworks &amp; tools</h3><div class="chips" id="tools"></div></div>
+      </div>
+      <div class="panel reveal"><h3>Core proficiency</h3><div class="bars" id="bars"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow reveal">Experience</div>
+    <h2 class="reveal">Career path</h2>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">Projects</div>
+    <h2 class="reveal">Things I've built</h2>
+    <div class="filters reveal" id="filters"></div>
+    <div class="proj-grid" id="projGrid"></div>
+  </div>
+</section>
+
+<section id="github">
+  <div class="wrap">
+    <div class="eyebrow reveal">Open source</div>
+    <h2 class="reveal">On GitHub</h2>
+    <div class="gh-grid reveal" id="ghStats"></div>
+    <div class="panel gh-cal reveal">
+      <h3>Contribution graph</h3>
+      <img id="ghCal" alt="GitHub contribution graph" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow reveal">Contact</div>
+    <h2 class="reveal">Let's build something <span>great</span> together.</h2>
+    <p class="reveal">Have a project, a role, or just want to say hi? My inbox is open.</p>
+    <a class="btn pri reveal" id="contactBtn">Say hello →</a>
+    <div class="socials reveal" id="footSocials"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> <span id="footName"></span>. Hand-built, no framework.</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script>
+/* =====================  EDIT ME  ===================== */
+const PROFILE = {
+  name: "Ankush Dhiman Vashisth",        // TODO: confirm your full name
+  firstName: "Ankush",
+  github: "AnkushDhimanVashist",
+  avatar: "https://avatars.githubusercontent.com/u/76862257?v=4",
+  status: "Open to opportunities",
+  roles: ["Software Engineer", "React Native Developer", "Node.js API builder", "Open-source tinkerer"],
+  lead: "I build cross-platform mobile apps with React Native and the developer tools and APIs behind them — clean architecture, fast UIs, and code that's pleasant to maintain.",
+  about: [
+    "I'm a <strong>software engineer</strong> who enjoys the full path from idea to shipped product: designing a mobile UI in <strong>React Native</strong>, wiring up native modules on Android and iOS, and building the <strong>Node.js</strong> services that power it.",
+    "Lately I've been focused on developer experience — my CLI <strong>create-node-api-kit</strong> scaffolds a production-ready REST API in one command — and on AI-powered learning apps like <strong>Vinod Vocab Vault</strong>."
+  ],
+  location: "India",                      // TODO: e.g. "Mohali, Punjab, India"
+  meta: ["💼 Software Engineer", "🚀 On GitHub since 2021"],
+  stats: [                                // [number, suffix, label]
+    [5, "+", "Years writing code"],      // TODO: adjust
+    [9, "", "Public repositories"],
+    [1, "", "npm package published"],
+    [2, "", "Platforms shipped (iOS & Android)"]
+  ],
+  email: "",                              // TODO: add a public email → enables "Say hello" mailto
+  linkedin: "",                           // TODO: https://www.linkedin.com/in/...
+  twitter: "",                            // TODO: https://x.com/...
+  npm: "https://www.npmjs.com/package/create-node-api-kit",
+  resume: "",                             // TODO: link to a PDF (Google Drive, or add resume.pdf to this repo)
+  heroChips: ["React Native", "TypeScript", "Node.js", "Express", "Redux Toolkit", "Firebase"],
+  languages: ["JavaScript", "TypeScript", "Java", "Kotlin", "HTML", "CSS"],
+  tools: ["React Native", "React", "Node.js", "Express", "Redux Toolkit", "Prisma", "PostgreSQL", "MongoDB", "Firebase", "Docker", "Jest", "Git", "GitHub Actions", "REST APIs"],
+  proficiency: [["React Native", 90], ["JavaScript / TypeScript", 90], ["Node.js & Express", 85], ["Redux Toolkit", 85], ["Android native (Java)", 70]],
+  // Add jobs here; leave empty to hide the section. Example:
+  // { title:"Software Engineer", company:"Acme Inc.", dates:"Jan 2023 – Present", place:"Remote", points:["Built X","Shipped Y"] }
+  experience: [],
+  projects: [
+    { feat:true, icon:"⚡", cat:"Dev tools", tag:"tools", title:"create-node-api-kit",
+      desc:"Scaffold a production-ready Node.js REST API in one command. Pick Express or Fastify, TypeScript or JS, a database and features like JWT auth, Swagger docs and Docker — and get a clean, tested, linted project with CI already wired up.",
+      cmd:"npx create-node-api-kit@latest my-api",
+      tags:["Node.js","TypeScript","EJS","CLI","npm","GitHub Actions"],
+      repo:"https://github.com/AnkushDhimanVashist/create-node-api-kit",
+      live:"https://ankushdhimanvashist.github.io/create-node-api-kit/" },
+    { icon:"📚", cat:"AI · Web", tag:"web", title:"Vinod Vocab Vault AI",
+      desc:"An AI-powered vocabulary builder for learning and revising words, with progress saved in the browser or to an account.",
+      tags:["AI","Web app","Firebase"],
+      repo:"https://github.com/AnkushDhimanVashist/Vocabulary-Vault",
+      live:"https://vinod-vocab-vault.web.app" },
+    { icon:"🎥", cat:"Mobile", tag:"mobile", title:"Screen Recorder (React Native)",
+      desc:"A React Native app for recording the device screen, with native Android code (Java & Kotlin) bridged to JavaScript.",
+      tags:["React Native","Java","Kotlin","Native modules"],
+      repo:"https://github.com/AnkushDhimanVashist/screenRecorderReactNative" },
+    { icon:"✨", cat:"Mobile", tag:"mobile", title:"animateWorld",
+      desc:"A playground for smooth animations and gestures in React Native, running natively on Android and iOS.",
+      tags:["React Native","Animations","Android","iOS"],
+      repo:"https://github.com/AnkushDhimanVashist/animateWorld" },
+    { icon:"🛒", cat:"Mobile", tag:"mobile", title:"eBiz",
+      desc:"An e-commerce mobile app built with React Native and JavaScript.",
+      tags:["React Native","JavaScript","E-commerce"],
+      repo:"https://github.com/AnkushDhimanVashist/ebiz_React" },
+    { icon:"🧩", cat:"Learning", tag:"mobile", title:"RN + Redux Toolkit",
+      desc:"A minimal, readable reference for structuring state in React Native with Redux Toolkit slices, thunks and typed hooks.",
+      tags:["React Native","Redux Toolkit"],
+      repo:"https://github.com/AnkushDhimanVashist/react-native-redux-toolkit" }
+  ]
+};
+/* ===================================================== */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const P = PROFILE;
+const ICONS = {
+  github:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>',
+  linkedin:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7C24 .8 23.2 0 22.2 0Z"/></svg>',
+  twitter:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2.3h3.4l-7.4 8.4 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9L.9 2.3h7l4.8 6.3 5.5-6.3Zm-1.2 17.9h1.9L7 4.2H5l12 16Z"/></svg>',
+  npm:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 7.3v8h6.7v1.4H12v-1.4h12v-8H0Zm6.7 6.7H5.3v-4H4v4H1.3V8.7h5.4V14Zm4 0v1.3H8V8.7h5.3V14h-2.6Zm12 0h-1.4v-4H20v4h-1.3v-4h-1.4v4h-2.6V8.7h8V14ZM10.7 10H12v2.7h-1.3V10Z"/></svg>',
+  email:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+  ext:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3h7v7M10 14 21 3M21 14v7H3V3h7"/></svg>'
+};
+
+// basic fields
+document.title = `${P.firstName} — ${P.roles[0]}`;
+$("#statusText").textContent = P.status;
+$("#firstName").textContent = P.firstName;
+$("#lead").textContent = P.lead;
+$("#avatar").src = P.avatar;
+$("#yr").textContent = new Date().getFullYear();
+$("#footName").textContent = P.name;
+$("#aboutText").innerHTML = P.about.map(t => `<p>${t}</p>`).join("");
+const chip = t => `<span class="chip">${esc(t)}</span>`;
+$("#heroChips").innerHTML = P.heroChips.map(chip).join("");
+$("#meta").innerHTML = [P.location && "📍 " + P.location, ...P.meta].filter(Boolean).map(chip).join("");
+$("#langs").innerHTML = P.languages.map(chip).join("");
+$("#tools").innerHTML = P.tools.map(chip).join("");
+
+// resume / email
+if (P.resume) $("#resumeBtn").href = P.resume; else $("#resumeBtn").remove();
+const mail = P.email ? "mailto:" + P.email : (P.linkedin || `https://github.com/${P.github}`);
+$("#contactBtn").href = mail; $("#navResume").href = "#contact";
+if (!P.email) $("#contactBtn").target = "_blank";
+
+// socials
+const socials = [
+  ["github", `https://github.com/${P.github}`, "GitHub"],
+  ["linkedin", P.linkedin, "LinkedIn"], ["twitter", P.twitter, "X"],
+  ["npm", P.npm, "npm"], ["email", P.email && "mailto:" + P.email, "Email"]
+].filter(s => s[1]);
+const socialHTML = socials.map(([k, u, l]) => `<a href="${esc(u)}" target="_blank" rel="noopener" aria-label="${l}" title="${l}">${ICONS[k]}</a>`).join("");
+$("#heroSocials").innerHTML = socialHTML; $("#footSocials").innerHTML = socialHTML;
+
+// stats
+$("#stats").innerHTML = P.stats.map(([n, suf, l]) => `<div class="stat"><b><span data-count="${n}">0</span><em>${suf}</em></b><span>${esc(l)}</span></div>`).join("");
+
+// bars
+$("#bars").innerHTML = P.proficiency.map(([n, v]) => `<div><div class="bar-top"><span>${esc(n)}</span><span>${v}%</span></div><div class="bar"><i data-w="${v}"></i></div></div>`).join("");
+
+// experience
+if (!P.experience.length) {
+  $("#experience").remove(); document.querySelector('[data-sec="experience"]').remove();
+} else {
+  $("#timeline").innerHTML = P.experience.map(j => `<div class="job reveal"><div class="panel">
+    <div class="job-h"><h4>${esc(j.title)}</h4><span>${esc(j.dates)}</span></div>
+    <div class="co">${esc(j.company)}${j.place ? ` · <span style="color:var(--ink3);font-weight:400">${esc(j.place)}</span>` : ""}</div>
+    <ul>${(j.points || []).map(p => `<li>${esc(p)}</li>`).join("")}</ul></div></div>`).join("");
+}
+
+// projects
+const cats = [["all", "All"], ["mobile", "Mobile"], ["tools", "Dev tools"], ["web", "Web & AI"]];
+$("#filters").innerHTML = cats.map(([k, l], i) => `<button data-f="${k}" class="${i ? "" : "on"}">${l}</button>`).join("");
+$("#projGrid").innerHTML = P.projects.map(p => `
+  <article class="proj reveal ${p.feat ? "feat" : ""}" data-tag="${p.tag}">
+    <div>
+      <div class="proj-top"><div class="proj-ico">${p.icon}</div>
+        <div class="proj-links">
+          ${p.repo ? `<a href="${esc(p.repo)}" target="_blank" rel="noopener" aria-label="Source">${ICONS.github}</a>` : ""}
+          ${p.live ? `<a href="${esc(p.live)}" target="_blank" rel="noopener" aria-label="Live">${ICONS.ext}</a>` : ""}
+        </div></div>
+      <div class="cat">${esc(p.cat)}</div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.desc)}</p>
+    </div>
+    <div>
+      ${p.cmd ? `<div class="cmd"><span>${esc(p.cmd)}</span><button data-copy="${esc(p.cmd)}">copy</button></div>` : ""}
+      <div class="tags">${p.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
+    </div>
+  </article>`).join("");
+$("#filters").addEventListener("click", e => {
+  const f = e.target.dataset.f; if (!f) return;
+  document.querySelectorAll("#filters button").forEach(b => b.classList.toggle("on", b.dataset.f === f));
+  document.querySelectorAll(".proj").forEach(c => c.classList.toggle("hide", f !== "all" && c.dataset.tag !== f));
+});
+document.addEventListener("click", e => {
+  const c = e.target.dataset && e.target.dataset.copy; if (!c) return;
+  navigator.clipboard?.writeText(c).then(() => { e.target.textContent = "copied!"; setTimeout(() => e.target.textContent = "copy", 1400); });
+});
+document.querySelectorAll(".proj").forEach(c => c.addEventListener("pointermove", e => {
+  const r = c.getBoundingClientRect();
+  c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px");
+}));
+
+// github (live)
+$("#ghCal").src = `https://ghchart.rshah.org/c6f24e/${P.github}`;
+const ghCards = (repos, followers, stars, since) => {
+  $("#ghStats").innerHTML = [[repos, "Public repos"], [stars, "Stars earned"], [since, "Member since"]]
+    .map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+};
+ghCards(P.stats[1][0], 0, "—", 2021);
+fetch(`https://api.github.com/users/${P.github}`).then(r => r.ok ? r.json() : null).then(u => {
+  if (!u) return;
+  fetch(`https://api.github.com/users/${P.github}/repos?per_page=100`).then(r => r.ok ? r.json() : []).then(rs => {
+    const stars = Array.isArray(rs) ? rs.reduce((a, r) => a + r.stargazers_count, 0) : "—";
+    ghCards(u.public_repos, u.followers, stars, new Date(u.created_at).getFullYear());
+  });
+}).catch(() => {});
+
+// typed roles
+(function type() {
+  const el = $("#typed"); let i = 0, j = 0, del = false;
+  (function tick() {
+    const w = P.roles[i];
+    el.textContent = w.slice(0, j);
+    if (!del && j === w.length) { del = true; return setTimeout(tick, 1600); }
+    if (del && j === 0) { del = false; i = (i + 1) % P.roles.length; }
+    j += del ? -1 : 1;
+    setTimeout(tick, del ? 35 : 70);
+  })();
+})();
+
+// terminal animation
+(function term() {
+  const lines = [
+    ['<span class="t-p">❯</span> <span class="t-c">', 'npx create-node-api-kit my-api', '</span>'],
+    ['<span class="t-d">', '◇  Framework       <span class="t-v">Express</span>\n◇  Language        <span class="t-v">TypeScript</span>\n◇  Database        <span class="t-v">PostgreSQL + Prisma</span>\n◇  Features        <span class="t-v">JWT · Swagger · Docker</span>', '</span>', true],
+    ['<span class="t-ok">', '✔ Project ready in 4.2s', '</span>', true],
+    ['\n<span class="t-p">❯</span> <span class="t-c">', 'cat ~/about.json', '</span>'],
+    ['', `{\n  <span class="t-v">"name"</span>: "${P.firstName}",\n  <span class="t-v">"stack"</span>: ["React Native", "Node.js"],\n  <span class="t-v">"shipping"</span>: <span class="t-p">true</span>\n}`, '', true],
+  ];
+  const pre = $("#term"); let out = "";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let li = 0;
+  function next() {
+    if (li >= lines.length) { pre.innerHTML = out + '\n<span class="t-p">❯</span> <span class="cur" style="display:inline-block;width:8px;height:1em;background:var(--acc);vertical-align:-2px;animation:blink 1s steps(1) infinite"></span>'; return; }
+    const [pre1, txt, post, instant] = lines[li++];
+    if (instant || reduce) { out += pre1 + txt + post + "\n"; pre.innerHTML = out; return setTimeout(next, reduce ? 0 : 380); }
+    let k = 0;
+    (function t() {
+      pre.innerHTML = out + pre1 + txt.slice(0, k) + post;
+      if (k++ < txt.length) return setTimeout(t, 45);
+      out += pre1 + txt + post + "\n"; setTimeout(next, 450);
+    })();
+  }
+  setTimeout(next, 600);
+})();
+
+// nav + reveal + counters + bars
+const nav = $("#nav");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 20), { passive: true });
+$("#menu").onclick = () => nav.classList.toggle("open");
+document.querySelectorAll("#links a").forEach(a => a.onclick = () => nav.classList.remove("open"));
+
+const count = el => {
+  const n = +el.dataset.count, t0 = performance.now(), d = 1400;
+  (function f(t) { const p = Math.min(1, (t - t0) / d); el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(f); })(t0);
+};
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("in");
+  e.target.querySelectorAll("[data-count]").forEach(count);
+  e.target.querySelectorAll("[data-w]").forEach(b => b.style.width = b.dataset.w + "%");
+  io.unobserve(e.target);
+}), { threshold: .15 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+const secs = [...document.querySelectorAll("section[id]")];
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) document.querySelectorAll("#links a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin: "-45% 0px -50% 0px" });
+secs.forEach(s => spy.observe(s));
+</script>
+</body>
+</html>

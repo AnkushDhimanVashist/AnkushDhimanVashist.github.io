@@ -527,11 +527,15 @@ const PROFILE = {
       tags:["Node.js","TypeScript","CLI","npm"],
       repo:"https://github.com/AnkushDhimanVashist/create-node-api-kit",
       live:"https://ankushdhimanvashist.github.io/create-node-api-kit/" },
-    { tag:"web", cat:"AI learning", title:"Vinod Vocab Vault AI", icon:"📚", color:"#22c55e", store:"Web app",
-      desc:"An AI-powered vocabulary builder for learning and revising words.",
-      points:["Progress saved in the browser or to an account"],
-      tags:["AI","Web app","Firebase"],
-      live:"https://vinod-vocab-vault.web.app" },
+    { tag:"web", cat:"AI learning · Chrome extension", title:"Vinod Vocab Vault AI", img:"assets/vocabvault-512.png", color:"#6366f1", store:"Chrome Web Store · Web · Android",
+      live:"https://chromewebstore.google.com/detail/vinod-vocab-vault-ai-%E2%80%94-en/iindhnplhnejmkkemeamcfjcinadpjjk",
+      web:"https://vinod-vocab-vault.web.app",
+      desc:"My own AI vocabulary app: double-click any word on a web page or PDF to see its meaning in English and Hindi, save it with its sentence, and review it anywhere.",
+      points:["Meanings in simple English and natural Hindi, with pronunciation, examples, synonyms, a memory trick and the word's origin",
+              "Built-in PDF reader so double-click lookup works in PDFs too; saved words are underlined wherever you read them again",
+              "Spaced-repetition reviews (FSRS) with daily streaks and reminders",
+              "One vault synced across the Chrome extension, the website and the Android app"],
+      tags:["Chrome extension","AI / LLM","FSRS","Firebase","Android"] },
     { tag:"mobile", cat:"Side project", title:"Screen Recorder", icon:"🎥", color:"#ef4444", store:"GitHub",
       desc:"A React Native app for recording the device screen, with native Android code bridged to JavaScript.",
       tags:["React Native","Java","Kotlin","Native modules"],
@@ -554,6 +558,7 @@ const ICONS = {
   npm:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 7.3v8h6.7v1.4H12v-1.4h12v-8H0Zm6.7 6.7H5.3v-4H4v4H1.3V8.7h5.4V14Zm4 0v1.3H8V8.7h5.3V14h-2.6Zm12 0h-1.4v-4H20v4h-1.3v-4h-1.4v4h-2.6V8.7h8V14ZM10.7 10H12v2.7h-1.3V10Z"/></svg>',
   email:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
   play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8c-.3.3-.4.7-.4 1.2v18c0 .5.1.9.4 1.2l10-10.2-10-10.2Zm11.4 8.8L5.2.9 17.8 8l-2.8 2.6Zm4.4.2 3 1.7c.8.5.8 1.6 0 2.1l-3 1.7-3.1-2.8 3.1-2.7ZM5.2 23.1 15 13.4l2.8 2.6-12.6 7.1Z"/></svg>',
+  globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>',
   ext:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3h7v7M10 14 21 3M21 14v7H3V3h7"/></svg>'
 };
 
@@ -609,7 +614,7 @@ if (!P.experience.length) {
 }
 
 // projects
-const cats = [["all", "All"], ["client", "Client apps"], ["mobile", "Side projects"], ["tools", "Dev tools"], ["web", "Web & AI"]];
+const cats = [["all", "All"], ["client", "Client apps"], ["web", "AI & extensions"], ["tools", "Dev tools"], ["mobile", "Side projects"]];
 $("#filters").innerHTML = cats.map(([k, l], i) => `<button data-f="${k}" class="${i ? "" : "on"}">${l}</button>`).join("");
 const termPrev = p => `<div class="mini-term"><div class="dots"><i></i><i></i><i></i></div><span style="color:var(--acc)">❯</span> <span style="color:var(--ink)">${esc(p.cmd)}</span>
 <br><span style="color:var(--ink3)">◇ Framework</span> <span style="color:var(--acc2)">Express</span>
@@ -631,6 +636,7 @@ $("#projGrid").innerHTML = P.projects.map(p => {
         <div class="proj-links">
           ${p.repo ? `<a href="${esc(p.repo)}" target="_blank" rel="noopener" aria-label="Source code" title="Source code">${ICONS.github}</a>` : ""}
           ${p.live ? `<a href="${esc(p.live)}" target="_blank" rel="noopener" aria-label="Open" title="Open">${ICONS.ext}</a>` : ""}
+          ${p.web ? `<a href="${esc(p.web)}" target="_blank" rel="noopener" aria-label="Website" title="Website">${ICONS.globe}</a>` : ""}
           ${p.play ? `<a href="${esc(p.play)}" target="_blank" rel="noopener" aria-label="Google Play" title="Google Play">${ICONS.play}</a>` : ""}
         </div>
       </div>

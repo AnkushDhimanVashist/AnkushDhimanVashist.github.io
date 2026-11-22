@@ -457,6 +457,14 @@ const PROFILE = {
               "Implemented live location sharing and background location tracking to surface nearby users",
               "Integrated discovery filters, match workflows and privacy controls"],
       tags:["React Native","Socket.io","Background location"] },
+    { tag:"client", cat:"Campus transit", title:"UMSV Dolphin Shuttle", img:"assets/dolphinshuttle.jpg", color:"#d4a017", store:"App Store · Google Play",
+      live:"https://apps.apple.com/us/app/umsv-dolphin-shuttle/id6759616674",
+      play:"https://play.google.com/store/apps/details?id=com.es11.campusbustracker",
+      desc:"Live shuttle tracker for the University of Mount Saint Vincent's Gold Line and White Line buses.",
+      points:["Real-time shuttle locations on each route map",
+              "Estimated arrival times at upcoming stops, with arrival notifications",
+              "Full schedule for each line"],
+      tags:["React Native","Live tracking","Maps","Push notifications"] },
     { tag:"client", cat:"Ride booking", title:"Reserve ARC", img:"assets/reservearc.jpg", color:"#3b82f6", store:"App Store · Google Play",
       live:"https://apps.apple.com/us/app/reserve-a-r-c/id6746159537",
       desc:"Driver and customer app for scheduled and on-demand ride reservations.",
@@ -533,6 +541,7 @@ const ICONS = {
   twitter:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2.3h3.4l-7.4 8.4 8.7 11.5h-6.8l-5.3-7-6.1 7H1.3l7.9-9L.9 2.3h7l4.8 6.3 5.5-6.3Zm-1.2 17.9h1.9L7 4.2H5l12 16Z"/></svg>',
   npm:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 7.3v8h6.7v1.4H12v-1.4h12v-8H0Zm6.7 6.7H5.3v-4H4v4H1.3V8.7h5.4V14Zm4 0v1.3H8V8.7h5.3V14h-2.6Zm12 0h-1.4v-4H20v4h-1.3v-4h-1.4v4h-2.6V8.7h8V14ZM10.7 10H12v2.7h-1.3V10Z"/></svg>',
   email:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8c-.3.3-.4.7-.4 1.2v18c0 .5.1.9.4 1.2l10-10.2-10-10.2Zm11.4 8.8L5.2.9 17.8 8l-2.8 2.6Zm4.4.2 3 1.7c.8.5.8 1.6 0 2.1l-3 1.7-3.1-2.8 3.1-2.7ZM5.2 23.1 15 13.4l2.8 2.6-12.6 7.1Z"/></svg>',
   ext:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 3h7v7M10 14 21 3M21 14v7H3V3h7"/></svg>'
 };
 
@@ -609,6 +618,7 @@ $("#projGrid").innerHTML = P.projects.map(p => {
         <div class="proj-links">
           ${p.repo ? `<a href="${esc(p.repo)}" target="_blank" rel="noopener" aria-label="Source code" title="Source code">${ICONS.github}</a>` : ""}
           ${p.live ? `<a href="${esc(p.live)}" target="_blank" rel="noopener" aria-label="Open" title="Open">${ICONS.ext}</a>` : ""}
+          ${p.play ? `<a href="${esc(p.play)}" target="_blank" rel="noopener" aria-label="Google Play" title="Google Play">${ICONS.play}</a>` : ""}
         </div>
       </div>
       <p class="desc">${esc(p.desc)}</p>

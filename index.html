@@ -122,6 +122,13 @@ h2{font-size:clamp(34px,4.5vw,52px);letter-spacing:-.03em;line-height:1.05;margi
 .bar{height:6px;background:var(--bg2);border-radius:6px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc2),var(--acc));border-radius:6px;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
 
+.ai-panel{background:linear-gradient(160deg,rgba(198,242,78,.07),var(--card) 55%);border-color:color-mix(in srgb,var(--acc) 22%,var(--line))}
+.ai-panel h3{color:var(--acc)}
+.chip.ai{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-color:var(--line2)}
+.chip.ai b{color:var(--ink);font-weight:600}
+.chip.ai i{font-style:normal;font-size:11px;color:var(--ink3)}
+.chip.ai::before{content:"✦";color:var(--acc);font-size:11px}
+
 /* timeline */
 .timeline{position:relative;padding-left:34px}
 .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--acc),var(--line) 60%)}
@@ -326,6 +333,7 @@ footer a:hover{color:var(--acc)}
       <div style="display:grid;gap:20px">
         <div class="panel reveal"><h3>Languages</h3><div class="chips" id="langs"></div></div>
         <div class="panel reveal"><h3>Frameworks &amp; tools</h3><div class="chips" id="tools"></div></div>
+        <div class="panel reveal ai-panel"><h3>AI tools I build with</h3><div class="chips" id="aiTools"></div></div>
       </div>
       <div class="panel reveal"><h3>Core proficiency</h3><div class="bars" id="bars"></div></div>
     </div>
@@ -402,7 +410,7 @@ const PROFILE = {
   avatar: "https://avatars.githubusercontent.com/u/76862257?v=4",
   status: "Open to opportunities",
   roles: ["Senior React Native Developer", "Team Lead", "Android & iOS app builder", "Node.js API builder", "Open-source tinkerer"],
-  lead: "Senior React Native Developer and Team Lead with 4.5+ years shipping Android and iOS apps — real-time chat, payments, subscriptions and location features — leading a team of 5 developers.",
+  lead: "Senior React Native Developer and Team Lead with 4.5+ years shipping Android and iOS apps — real-time chat, payments, subscriptions and location features — leading a team of 5 developers and building faster with AI tools like Claude Code and Codex.",
   about: [
     "I'm a <strong>Senior React Native Developer</strong> and <strong>Team Lead</strong>, mentoring a team of <strong>5 junior developers</strong>, with <strong>4.5+ years</strong> of experience across three companies, building apps that are live on the <strong>App Store</strong> and <strong>Google Play</strong>: dating, social music streaming, influencer platforms, e-commerce and ride booking.",
     "My day-to-day is real-time features with <strong>Socket.io</strong> and Firestore, payments with <strong>Stripe, Razorpay and RevenueCat</strong>, background location, deep links and native modules. On the side I build developer tools like <strong>create-node-api-kit</strong> and AI apps like <strong>Vinod Vocab Vault</strong>.",
@@ -422,10 +430,11 @@ const PROFILE = {
   twitter: "",
   npm: "https://www.npmjs.com/package/create-node-api-kit",
   resume: "resume.pdf",
-  heroChips: ["React Native", "TypeScript", "Redux Toolkit", "Zustand", "Socket.io", "Firebase", "Stripe", "RevenueCat"],
+  heroChips: ["React Native", "TypeScript", "Redux Toolkit", "Zustand", "Socket.io", "Firebase", "Stripe", "RevenueCat", "Claude Code"],
   languages: ["JavaScript", "TypeScript", "Java", "Kotlin", "HTML", "CSS"],
+  aiTools: [["Claude Code", "CLI agent"], ["Claude", "Anthropic"], ["Codex", "OpenAI CLI"], ["Antigravity", "Google IDE"], ["ChatGPT", "OpenAI"], ["Gemini", "Google"]],
   tools: ["React Native", "React", "Expo", "Redux Toolkit", "Zustand", "React Navigation", "Socket.io", "REST APIs", "Firebase", "Stripe", "Razorpay", "RevenueCat", "In-App Purchase", "Push Notifications", "Deep Links", "Native Modules", "Node.js", "Express", "Git", "Xcode", "Jira"],
-  proficiency: [["React Native (Android & iOS)", 92], ["JavaScript / TypeScript", 90], ["Redux Toolkit / Zustand", 88], ["Payments & subscriptions", 85], ["Real-time (Socket.io, Firestore)", 85], ["Node.js & Express", 75]],
+  proficiency: [["React Native (Android & iOS)", 92], ["JavaScript / TypeScript", 90], ["Redux Toolkit / Zustand", 88], ["Payments & subscriptions", 85], ["Real-time (Socket.io, Firestore)", 85], ["AI-assisted dev (Claude Code, Codex)", 90], ["Node.js & Express", 75]],
   experience: [
     { title:"Senior React Native Developer & Team Lead", company:"iTechnolabs Inc", dates:"Nov 2024 – Present", place:"Mohali",
       points:["Leading a team of 5 junior React Native developers: task planning, code reviews and mentoring","Building and shipping cross-platform client apps for Android and iOS"] },
@@ -559,6 +568,7 @@ $("#heroChips").innerHTML = P.heroChips.map(chip).join("");
 $("#meta").innerHTML = [P.location && "📍 " + P.location, ...P.meta].filter(Boolean).map(chip).join("");
 $("#langs").innerHTML = P.languages.map(chip).join("");
 $("#tools").innerHTML = P.tools.map(chip).join("");
+$("#aiTools").innerHTML = (P.aiTools || []).map(([n, d]) => `<span class="chip ai"><b>${esc(n)}</b><i>${esc(d)}</i></span>`).join("");
 
 // resume / email
 if (P.resume) $("#resumeBtn").href = P.resume; else $("#resumeBtn").remove();
